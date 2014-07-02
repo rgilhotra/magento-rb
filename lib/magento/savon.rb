@@ -10,10 +10,8 @@ Savon.configure do |config|
   #config.logger = Rails.logger  # using the Rails logger
 end
  
-client = Savon.client(open_timeout: 600, read_timeout: 600) do
-  wsdl.document = "#{ENV['MAGENTO_ENDPOINT']}/index.php/api/?wsdl"
-end
- 
+client = Savon.client(open_timeout: 600, read_timeout: 600, wsdl: "#{ENV['MAGENTO_ENDPOINT']}/index.php/api/?wsdl")
+  
 response = client.request :login do
   soap.body = { :username => ENV['MAGENTO_API_USER'], :apiKey => ENV['MAGENTO_API_KEY'] }
 end
