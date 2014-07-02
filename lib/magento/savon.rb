@@ -6,13 +6,11 @@ require 'savon'
  
 Savon.configure do |config|
   config.log = false            # disable logging
-  config.open_timeout = 160000
-  config.read_timeout = 160000
   #config.log_level = :info      # changing the log level
   #config.logger = Rails.logger  # using the Rails logger
 end
  
-client = Savon::Client.new do
+client = Savon.client(open_timeout:100, read_timeout:100) do
   wsdl.document = "#{ENV['MAGENTO_ENDPOINT']}/index.php/api/?wsdl"
 end
  
