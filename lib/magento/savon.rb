@@ -6,8 +6,8 @@ require 'savon'
  
 Savon.configure do |config|
   config.log = false            # disable logging
-  config.OPEN_TIMEOUT = 60000
-  config.READ_TIMEOUT = 60000
+  config.OPEN_TIMEOUT = 160000
+  config.READ_TIMEOUT = 160000
   #config.log_level = :info      # changing the log level
   #config.logger = Rails.logger  # using the Rails logger
 end
